@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Hypertension Prediction System</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+<h2>Hypertension Prediction System</h2>
+</header>
+
+<div class="container">
+
+<section class="intro">
+
+<h1>AI-Based Hypertension Risk Assessment</h1>
+
+<p>
+This system uses a Machine Learning model to assess the risk level of hypertension
+based on patient symptoms, medical history, and blood pressure readings.
+</p>
+
+<p>
+It helps healthcare professionals and individuals identify potential
+hypertension stages and provides clinical recommendations.
+</p>
+
+</section>
+
+
+<section class="form-section">
+
+<h2>Patient Assessment Form</h2>
+
+<form action="/predict" method="POST">
+
+<h3>Patient Demographics</h3>
+
+<label>Gender</label>
+<select name="Gender" required>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<label>Age Group</label>
+<select name="Age" required>
+<option>18-34</option>
+<option>35-50</option>
+<option>51-64</option>
+<option>65+</option>
+</select>
+
+<h3>Medical History</h3>
+
+<label>Family History</label>
+<select name="History">
+<option>No</option>
+<option>Yes</option>
+</select>
+
+<label>Patient Type</label>
+<select name="Patient">
+<option>No</option>
+<option>Yes</option>
+</select>
+
+<label>Taking Medication</label>
+<select name="TakeMedication">
+<option>No</option>
+<option>Yes</option>
+</select>
+
+<h3>Symptoms</h3>
+
+<label>Severity</label>
+<select name="Severity">
+<option>Mild</option>
+<option>Moderate</option>
+<option>Severe</option>
+</select>
+
+<label>Breath Shortness</label>
+<select name="BreathShortness">
+<option>No</option>
+<option>Yes</option>
+</select>
+
+<label>Visual Changes</label>
+<select name="VisualChanges">
+<option>No</option>
+<option>Yes</option>
+</select>
+
+<label>Nose Bleeding</label>
+<select name="NoseBleeding">
+<option>No</option>
+<option>Yes</option>
+</select>
+
+<h3>Blood Pressure</h3>
+
+<label>Systolic</label>
+<select name="Systolic">
+<option>100 - 110</option>
+<option>111 - 120</option>
+<option>121 - 130</option>
+<option>130+</option>
+</select>
+
+<label>Diastolic</label>
+<select name="Diastolic">
+<option>70 - 80</option>
+<option>81 - 90</option>
+<option>91 - 100</option>
+<option>100+</option>
+</select>
+
+<h3>Lifestyle</h3>
+
+<label>Diagnosis Duration</label>
+<select name="Whendiagnoused">
+<option><1 Year</option>
+<option>1-5 Years</option>
+<option>>5 Years</option>
+</select>
+
+<label>Controlled Diet</label>
+<select name="ControlledDiet">
+<option>No</option>
+<option>Yes</option>
+</select>
+
+<button type="submit">Assess Risk</button>
+
+</form>
+
+</section>
+
+
+{% if result %}
+
+<div class="result-box" style="border-left:6px solid {{color}}">
+
+<h2>Risk Assessment Result</h2>
+
+<p><b>Hypertension Stage:</b> {{result}}</p>
+
+<p><b>Prediction Confidence:</b> {{confidence}}%</p>
+
+<p><b>Clinical Recommendation:</b></p>
+
+<p>{{recommendation}}</p>
+
+</div>
+
+{% endif %}
+
+
+<section class="about">
+
+<h2>About This Project</h2>
+
+<p>
+Hypertension is a major risk factor for cardiovascular diseases worldwide.
+Early detection and monitoring are essential to prevent complications.
+</p>
+
+<p>
+This application uses Machine Learning algorithms trained on clinical data
+to classify hypertension stages based on patient inputs.
+</p>
+
+</section>
+
+</div>
+
+
+<footer>
+
+<p>AI Healthcare Project | Hypertension Prediction System</p>
+
+</footer>
+
+</body>
+
+</html>
